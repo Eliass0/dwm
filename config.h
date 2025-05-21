@@ -61,6 +61,10 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *webcmd[]  = { "librewolf", NULL };
 static const char *shutdowncmd[]  = { "poweroff", NULL };
+static const char *volup[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "+5%", NULL };
+static const char *voldown[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "-5%", NULL };
+static const char *volzero[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "0%", NULL };
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -89,6 +93,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_F5,     spawn,          {.v = volzero } },
+	{ MODKEY|ShiftMask,             XK_F6,     spawn,          {.v = voldown } },
+	{ MODKEY|ShiftMask,             XK_F7,     spawn,          {.v = volup } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
