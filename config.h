@@ -60,18 +60,21 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *webcmd[]  = { "librewolf", NULL };
-static const char *shutdowncmd[]  = { "poweroff", NULL };
 static const char *volup[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "+5%", NULL };
 static const char *voldown[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "-5%", NULL };
 static const char *volzero[]  = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1f.3.analog-stereo", "0%", NULL };
-
+static const char *explorercmd[]  = { "dolphin", NULL };
+static const char *slockcmd[]  = { "slock", NULL };
+static const char *aicmd[]  = { "kitty", "ollama", "run", "deepseek-r1:7b", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ControlMask|ShiftMask, XK_l,      spawn,          {.v = shutdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = aicmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = webcmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = explorercmd } },
+	{ MODKEY,                       XK_l,      spawn,          {.v = slockcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
