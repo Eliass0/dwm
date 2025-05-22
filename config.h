@@ -89,7 +89,7 @@ static const Key keys[] = {
 //	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // floating layout
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // single client layout
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, // view tag, hold control for multiselect
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, // set tag for client, hold control for multiselect
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
